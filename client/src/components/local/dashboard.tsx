@@ -45,7 +45,7 @@ import { DiseaseState } from "./disease";
 
 export interface DashboardState {
   appointmentId: number;
-  appointmentedDate: Date;
+  appointmentDate: string;
   isCompleted: boolean;
   patient: {
     name: string;
@@ -107,6 +107,7 @@ export default function Dashboards() {
               <TableHead>Patient Name</TableHead>
               <TableHead>Doctor Name</TableHead>
               <TableHead>Disease Name</TableHead>
+              <TableHead>Appointment Date</TableHead>
               <TableHead className="text-right">Is Completed</TableHead>
               <TableHead className="text-right">Action</TableHead>
             </TableRow>
@@ -118,6 +119,9 @@ export default function Dashboards() {
                 <TableCell>{dashboard.patient.name}</TableCell>
                 <TableCell>{dashboard.doctor.name}</TableCell>
                 <TableCell>{dashboard.disease.name}</TableCell>
+                <TableCell>
+                  {new Date(dashboard.appointmentDate).toUTCString()}
+                </TableCell>
                 <TableCell className="text-right">
                   {dashboard.isCompleted ? (
                     <></>
