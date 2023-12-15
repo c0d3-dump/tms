@@ -8,8 +8,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 
+// options.UseSqlServer(builder.Configuration.GetConnectionString("CmsConnectionString"))
 builder.Services.AddDbContext<Database>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CmsConnectionString"))
+    options.UseInMemoryDatabase("tmsdb")
 );
 
 builder.Services.AddControllersWithViews();

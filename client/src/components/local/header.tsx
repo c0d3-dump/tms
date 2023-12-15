@@ -1,12 +1,10 @@
 import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
-import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { logout } = useAuth0();
 
   const onNavigationClicked = useCallback(
     (path: string) => {
@@ -47,11 +45,9 @@ export default function Header() {
       <Button
         variant="destructive"
         onClick={() => {
-          logout({
-            logoutParams: {
-              returnTo: window.location.origin,
-            },
-          });
+          localStorage.clear();
+          window.location.href = "/";
+          window.location.reload();
         }}
       >
         Log Out
